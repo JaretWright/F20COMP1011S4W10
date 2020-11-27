@@ -9,6 +9,17 @@ public class Customer {
     private PhoneNumber phoneNumber;
     private double weightInKG, heightInCm;
 
+    /**
+     *
+     * @param id
+     * @param firstName
+     * @param lastName
+     * @param ccType
+     * @param bloodType
+     * @param phoneNumber -this must be in the format of NXX-NXX-XXXX
+     * @param weightInKG
+     * @param heightInCm
+     */
     public Customer(int id, String firstName, String lastName, String ccType, String bloodType, String phoneNumber, double weightInKG, double heightInCm) {
         setId(id);
         setFirstName(firstName);
