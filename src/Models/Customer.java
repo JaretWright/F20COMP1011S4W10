@@ -1,5 +1,6 @@
 package Models;
 
+import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
 
@@ -8,6 +9,7 @@ public class Customer {
     private String firstName, lastName,ccType,bloodType;
     private PhoneNumber phoneNumber;
     private double weightInKG, heightInCm;
+    private LocalDate birthday;
 
     /**
      *
@@ -20,7 +22,9 @@ public class Customer {
      * @param weightInKG
      * @param heightInCm
      */
-    public Customer(int id, String firstName, String lastName, String ccType, String bloodType, String phoneNumber, double weightInKG, double heightInCm) {
+    public Customer(int id, String firstName, String lastName, String ccType,
+                    String bloodType, String phoneNumber, double weightInKG,
+                    double heightInCm, LocalDate birthday) {
         setId(id);
         setFirstName(firstName);
         setLastName(lastName);
@@ -29,6 +33,15 @@ public class Customer {
         setPhoneNumber(phoneNumber);
         setWeightInKG(weightInKG);
         setHeightInCm(heightInCm);
+        setBirthday(birthday);
+    }
+
+    public LocalDate getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(LocalDate birthday) {
+        this.birthday = birthday;
     }
 
     public int getId() {

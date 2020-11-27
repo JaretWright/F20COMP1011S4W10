@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class DBUtility {
@@ -24,6 +25,12 @@ public class DBUtility {
        {
            while (resultSet.next())
            {
+               String[] birthdayArray = resultSet.getString("birthday").split("/");
+               int year = Integer.parseInt(birthdayArray[2]);
+               int month = Integer.parseInt(birthdayArray[0]);
+               int day = Integer.parseInt(birthdayArray[1]);
+
+               LocalDate birthday = LocalDate.of(year, month, day);
                Customer newCustomer = new Customer(
                        resultSet.getInt("number"),
                        resultSet.getString("firstName"),
@@ -32,7 +39,8 @@ public class DBUtility {
                        resultSet.getString("bloodtype"),
                        resultSet.getString("telephonenumber"),
                        Double.parseDouble(resultSet.getString("kilograms")),
-                       Double.parseDouble(resultSet.getString("centimeters")));
+                       Double.parseDouble(resultSet.getString("centimeters")),
+                       birthday);
                customers.add(newCustomer);
            }
        }
