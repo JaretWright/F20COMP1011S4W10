@@ -1,6 +1,7 @@
 package Models;
 
 import java.time.LocalDate;
+import java.time.Period;
 import java.util.Arrays;
 import java.util.List;
 
@@ -42,6 +43,11 @@ public class Customer {
 
     public void setBirthday(LocalDate birthday) {
         this.birthday = birthday;
+    }
+
+    public int getAge()
+    {
+        return Period.between(birthday, LocalDate.now()).getYears();
     }
 
     public int getId() {
@@ -142,7 +148,8 @@ public class Customer {
 
     public String toString()
     {
-        return String.format("%d, %s %s, Height: %.0f cm   Weight: %.0f kg",
-                                id, firstName, lastName, heightInCm,weightInKG);
+        return String.format("%d, %s %s, Age: %d Height: %.0f cm   Weight: %.0f kg",
+                                id, firstName, lastName, getAge(),
+                                heightInCm,weightInKG);
     }
 }

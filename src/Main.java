@@ -2,6 +2,9 @@ import Models.Customer;
 import Utilities.DBUtility;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.OptionalDouble;
+import java.util.stream.Collectors;
 
 public class Main {
     public static void main(String[] args) {
@@ -28,5 +31,18 @@ public class Main {
                         .count());
 
 
+        //display all the customers over 18
+        List<Customer> over65 = customers.stream()
+                                .filter(customer -> customer.getAge()>=65)
+                                .collect(Collectors.toList());
+
+        System.out.println("# of Customers over 18: "+over65.size());
+
+        OptionalDouble avgAge = customers.stream()
+                                .mapToDouble(Customer::getAge)
+                                .average();
+
+        if (avgAge.isPresent())
+            System.out.println("Average age is: "+avgAge.getAsDouble());
     }
 }
