@@ -3,7 +3,9 @@ import Utilities.DBUtility;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.OptionalDouble;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class Main {
@@ -44,5 +46,11 @@ public class Main {
 
         if (avgAge.isPresent())
             System.out.println("Average age is: "+avgAge.getAsDouble());
+
+        Map<String, Long> bloodTypeCount = customers.stream()
+                                                .map(Customer::getBloodType)
+                                                .collect(Collectors.groupingBy(Function.identity(),
+                                                                Collectors.counting()));
+        System.out.println(bloodTypeCount);
     }
 }
