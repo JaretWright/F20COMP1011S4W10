@@ -1,4 +1,5 @@
 import Models.Customer;
+import Utilities.CovidJSONReader;
 import Utilities.DBUtility;
 
 import java.util.ArrayList;
@@ -52,5 +53,7 @@ public class Main {
                                                 .collect(Collectors.groupingBy(Function.identity(),
                                                                 Collectors.counting()));
         System.out.println(bloodTypeCount);
+
+        CovidJSONReader.getCovidJSON();
     }
 }
